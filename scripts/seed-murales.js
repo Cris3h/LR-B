@@ -49,7 +49,10 @@ function buildPayload(i) {
   const n = i + 1;
   return {
     name: `Historia ${n} — ${c.city}`,
-    image: `https://picsum.photos/seed/listonrosa${n}/800/600`,
+    images: [
+      `https://picsum.photos/seed/listonrosa${n}a/800/600`,
+      `https://picsum.photos/seed/listonrosa${n}b/800/600`,
+    ],
     description: `Relato de concientización sobre el cáncer de mama y el acompañamiento en la vía pública. Mural ${n}: un fragmento de historia en ${c.city}, ${c.state}.`,
     place: { city: c.city, state: c.state },
     coordinates: [lat, lng],
