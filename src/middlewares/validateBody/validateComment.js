@@ -1,18 +1,15 @@
 const z = require("zod");
 
+const trim = (v) => (typeof v === "string" ? v.trim() : v);
+
 const commentSchema = z.object({
-   user: z.string({
-      invalid_type_error: 'User must be a string',
-      required_error: 'User es required'
-   }),
-   title: z.string({
-      invalid_type_error: 'Title must be a string',
-      required_error: 'Title es required'
-   }),
-   body: z.string({
-      invalid_type_error: 'Body must be a string',
-      required_error: 'Body es required'
-   })
+   user: z.preprocess(trim, z.string().min(1, "User es required")),
+   title: z.preprocess(trim, z.string().min(1, "Title es required").max(200)),
+   body: z.preprocess(trim, z.string().min(1, "Body es required").max(8000)),
+   picture: z.preprocess(
+      (v) => (v === "" || v == null ? undefined : trim(v)),
+      z.string().url().optional()
+   ),
 })
 
 const validateComment = (obj) => {

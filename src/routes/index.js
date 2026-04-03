@@ -9,7 +9,13 @@ router.get('/artwork/:id', middleWare.ArtWorkValidationId, getOneArtWork);
 router.get('/comment', getAllComments);
 
 router.post('/artwork', middleWare.ArtWorkValidation, createArtWorks);
-router.post('/comment/:id', middleWare.CommentValidation, middleWare.CommentValidationId, createComments);
+router.post(
+  '/comment/:id',
+  middleWare.requireInternalCommentKey,
+  middleWare.CommentValidation,
+  middleWare.CommentValidationId,
+  createComments
+);
 
 
 

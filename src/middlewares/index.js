@@ -5,4 +5,5 @@ module.exports = {
    ArtWorkValidationId: require("./ArtWorkValidationId"),
    CommentValidation: require("./CommentValidation"),
    CommentValidationId: require("./CommentValidationId"),
+   requireInternalCommentKey: require("./requireInternalCommentKey"),
 }
